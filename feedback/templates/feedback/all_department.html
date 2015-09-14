@@ -1,0 +1,21 @@
+{% extends "feedback/index.html" %}
+  {% block body  %}
+<div class="row">
+    <p> Click on any department to view feedback of faculty of that department.</p>
+    <table class="table table-bordered"><tbody><tr><th colspan="2" style="text-align:center;"><h4>Summary of Feedback Response</h4></th></tr>
+
+ <tr><th><b>Total number of Course-Faculty pairs populated </b></th><th>{{course}}</th></tr>
+
+    <tr><th><b>Course-Faculty pair for which atleast one feedback is received </b></th><th>{{result_count}}</th></tr>
+    <tr><th><b>Total number of Students: </b></th><th>{{student}}</th></tr>
+    <tr><th><b>Total number of feedback for submission: </b></th><th>{{total}}</th></tr>
+     <tr><th><b>Actual number of feedback received: </b></th><th>{{done}}</th></tr>
+
+
+    </tbody></table>
+    {% for department in dept %}
+   <p class="msg"><b> <span class="firstcharacter"> {{ forloop.counter }}.</span>  {{department}} </b>
+       <a class="btn btn-info ripple-effect pull-right" href="{{department.dept_code}}">Click Here</a> </p>
+    {% endfor %}
+</div>
+{% endblock %}

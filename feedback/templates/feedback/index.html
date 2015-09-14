@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Analytics for Feedback Portal</title>
+        <link rel="shortcut icon" href="/static/feedback/images/favicon.ico">
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="/static/css/styles.css" rel="stylesheet">
+        <link href="/static/feedback/main.css" rel="stylesheet">
+         <link href="/static/feedback/material.css" rel="stylesheet">
+        <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+        <script src="/static/css/sweetalert/dist/sweetalert.min.js"></script> <link rel="stylesheet" type="text/css" href="/static/css/sweetalert/dist/sweetalert.css">
+    </head>
+	<body>
+<!-- Begin Navbar -->
+<div id="nav">
+    <!--  <div class="navbar navbar-default navbar-fixed-to" data-spy="affix" data-offset-top="200"> -->
+  <div class="navbar navbar-default affix-top">
+    <div class="container">
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+         <span class="navbar-brand hidden-xs"><img src="/static/feedback/images/emblem.png"> </span>
+        <a href="/login"><heading  class="navbar-brand">STUDENTS' FEEDBACK ON COURSES <br><span style="font-size:13px;">Analytics for Even Semester 2014-15</span></heading> </a>
+
+ <span class="navbar-brand"><img src="/static/feedback/images/logo2.jpg"> </span>
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+
+
+<div class="row" style="margin:0;">
+      <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+
+           <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, <span class="glyphicon glyphicon-user"></span> <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/analytics">Dashboard</a></li>
+                                <li><a href="/">Student's Page</a></li>
+                                <li><a href="/logout">Logout</a></li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+</div>
+    </div>
+  </div><!-- /.navbar -->
+</div>
+
+
+
+
+
+
+
+
+
+<div class="container">
+    {% if messages %}
+<div class="row">
+        <br><br>
+    		<div class="error-notice">
+{% if messages %}
+
+    {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+          <div class="alert alert-success-alt alert-dismissable">
+             <span class="glyphicon glyphicon-bullhorn"></span>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                    ×</button><strong>Success!</strong> {{ message | safe }}</div>
+     {% endif %}
+
+    {% endfor %}
+
+{% endif %}
+    </div>
+    		<div class="error-notice">
+{% if messages %}
+
+    {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+          <div class="alert alert-danger-alt alert-dismissable">
+               <span class="glyphicon glyphicon-remove"></span>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                    ×</button><strong>Error!</strong> {{ message | safe }} </div>
+{% endif %}
+    {% endfor %}
+
+{% endif %}
+    </div>
+    <div class="error-notice">
+{% if messages %}
+
+    {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+
+           <div class="alert alert-purple alert-dismissable">
+                 <span class="glyphicon glyphicon-bullhorn"></span>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                    ×</button><strong> Notification ! </strong> {{ message | safe }}</div>
+
+{% endif %}
+    {% endfor %}
+
+{% endif %}
+    </div>
+	</div>
+{% endif %}
+  {% block body  %}
+  <div class="text-center">
+    <h1>Bootstrap starter template</h1>
+    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+  </div>
+  {% endblock %}
+
+</div><!-- /.container -->
+	<!-- script references -->
+
+
+
+<a id="back-to-top" href="#" class="btn btn-primary btn-sm back-to-top ripple-effect" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left" ><span class="glyphicon glyphicon-chevron-up"></span></a>
+
+<script src="/static/js/jquery.js"></script>
+  <script src="/static/js/main.js"></script>
+		<script src="/static/js/bootstrap.min.js"></script>
+
+
+
+	</body>
+<footer id="footer" class="midnight-blue">
+<div class="container" style="background:none;">
+            <div class="row">
+                <div class="col-sm-8">
+
+                <b>    &copy; 2015 IIT(BHU). All Rights Reserved.</b>
+               <p><ul style="margin:0px;; padding-left:0px;">
+                                                <li style="margin:0px;; padding-left:0px;"><a href="/analytics">return to dashboard</a></li>
+
+
+<li><a href="/credits">credits for development</a> </li>
+
+                    </ul>
+                    <br>
+
+                </p>
+
+               </div>
+
+                <div class="col-sm-4">
+                    <ul class="pull-right">
+                        <li><img src="/static/feedback/images/footer-img.png"></li>
+
+                    </ul>
+                </div>
+            </div>
+</div>
+    </footer><!--/#footer-->
+</html>

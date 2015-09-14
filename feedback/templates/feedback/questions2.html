@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+{% extends "feedback/layout.html" %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+   {% block title %} <title>Questions List - IIT(BHU) Feedback</title> {% endblock %}
+</head>
+{% block nav %}
+<div class="wrapper col2">
+  <div id="topnav">
+   <ul><li><a href="/">Home</a></li><li> &#9658;</li><li><a href="{% url 'feedback:index' key %}"> Course Dashboard</a> </li><li> &#9658;</li><li>Questions List</li>
+
+       </ul>
+      </div>
+    </div>
+{% endblock %}
+<body>
+{% block body %}
+
+<div class="row">
+<form action ="" method = "post" onsubmit="return confirm('Are you sure to submit this response?');">
+         <h3 style="padding:10px;font-size:25px; border: none;" class="btn-magick"><span class="glyphicon glyphicon-list-alt"></span> {{subject.subject_name}}, {{professor.prof_name}}</h3>
+
+
+    <h3 class="msg msg-success">1. Course Organisation</h3><br><p>To add Comment On Course Organisation scroll to bottom of page.</p>
+    {% for result in result_list1 %}
+
+            <p><b>{{result.question.question_text}}</b>
+            {% csrf_token %}
+                <span class="pull-right">
+            <input type = "radio" name = "{{result.question.question_text}}" value = "excellent" required /><b>Excellent</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "verygood" required /><b>Very Good</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "good" required /><b>Good</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "fair" required /><b>Fair</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "poor" required /><b>Poor</b>
+                    </span>
+       </p>
+    {% endfor %}<br>
+    <h3 class="msg msg-success">2. Presentation</h3><br><p>To add Comment On Presentation scroll to bottom of page.</p>
+    {% for result in result_list2 %}
+
+            <p><b>{{result.question.question_text}}</b>
+            {% csrf_token %}
+                <span class="pull-right">
+            <input type = "radio" name = "{{result.question.question_text}}" value = "excellent" required /><b>Excellent</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "verygood" required /><b>Very Good</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "good" required /><b>Good</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "fair" required /><b>Fair</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "poor" required /><b>Poor</b>
+            </span></p>
+
+
+    {% endfor %}<br>
+    <h3 class="msg msg-success">3. Interaction and Rapport</h3><br><p>To add Comment On Interaction and Rapport scroll to bottom of page.</p>
+    {% for result in result_list3 %}
+        <p>
+            <b>{{result.question.question_text}}</b>
+            {% csrf_token %}
+            <span class="pull-right">
+            <input type = "radio" name = "{{result.question.question_text}}" value = "excellent" required /><b>Excellent</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "verygood" required /><b>Very Good</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "good" required /><b>Good</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "fair" required /><b>Fair</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "poor" required /><b>Poor</b>
+                </span>
+        </p>
+    {% endfor %}<br>
+    <h3 class="msg msg-success">4. Examinations and Grading</h3> <p>To add Comment On Examinations and Grading scroll to bottom of page.</p>
+    {% for result in result_list4 %}
+        <p>
+            <b>{{result.question.question_text}}</b>
+            {% csrf_token %}
+            <span class="pull-right">
+            <input type = "radio" name = "{{result.question.question_text}}" value = "excellent" required /><b>Excellent</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "verygood" required /><b>Very Good</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "good" required /><b>Good</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "fair" required /><b>Fair</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "poor" required /><b>Poor</b>
+                </span>
+       </p>
+    {% endfor %}<br>
+    <h3 class="msg msg-success">5. Overall</h3>
+    {% for result in result_list5 %}
+        <p>
+            <b>{{result.question.question_text}}</b>
+            {% csrf_token %}
+            <span class="pull-right">
+            <input type = "radio" name = "{{result.question.question_text}}" value = "excellent" required /><b>Excellent</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "verygood" required /><b>Very Good</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "good" required /><b>Good</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "fair" required /><b>Fair</b>
+            <input type = "radio" name = "{{result.question.question_text}}" value = "poor" required /><b>Poor</b>
+                </span>
+        </p>
+    {% endfor %}<br>
+
+
+    <div class="form-group">
+  <label for="comment_1" style="width:100%;"><div class="msg msg-info"> Comment on Course Organisation :</div></label>
+  <textarea class="form-control" rows="5" id="comment_1" name = "comment_1"></textarea>
+</div>
+        <div class="form-group">
+  <label for="comment_2" style="width:100%;"><div class="msg msg-info"> Comment on Presentation:</div></label>
+  <textarea class="form-control" rows="5" id="comment_2" name = "comment_2"></textarea>
+</div>
+            <div class="form-group">
+  <label for="comment_3" class="msg msg-info" style="width:100%;">Comment on Interaction and Rapport:</label>
+  <textarea class="form-control" rows="5" id="comment_3" name = "comment_3"></textarea>
+</div>
+
+           <div class="form-group">
+  <label for="comment_4" class="msg msg-info" style="width:100%;">Comment on Examinations and Grading:</label>
+  <textarea class="form-control" rows="5" id="comment_4" name = "comment_4"></textarea>
+</div>
+<button type = "submit"   class="btn btn-success pull-right ripple-effect" >Submit Feedback</button>
+
+
+</form>
+
+<br>
+<br>
+
+</div>
+<script> function confirm_fn(){
+swal({
+html:true,
+
+title: "Are you sure?",
+
+ text: "<b>After this you won't be able to Edit your respons!<b> </p>",
+  type: "warning",
+
+  showCancelButton: true,
+  confirmButtonColor: "#DD6B55",
+  confirmButtonText: "Yes, Lock it!",
+   closeOnConfirm: true
+   },
+   function(response){
+   if (response==true){
+   window.location = "lock";
+   }
+   else {
+   console.log('You clicked Cancel');
+   }
+   });
+   }
+
+
+</script>
+{% endblock %}
+
+</body>
+
+</html>

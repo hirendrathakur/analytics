@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+{% extends "feedback/layout.html" %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+   {% block title %} <title> STUDENTS'S FEEDBACK ON COURSES EVEN SEMESTER 2014-15</title> {% endblock %}
+</head>
+{% block nav %}
+<div class="wrapper col2">
+  <div id="topnav">
+   <ul><li><a href="/">Home</a></li><li> &#9658;</li><li><a href="#"></a> Course Dashboard </li><li> &#9658;</li>
+
+       </ul>
+      </div>
+    </div>
+{% endblock %}
+<body>
+{% block body %}
+<div class="row" >
+    <div class="timeline" style="margin-left:30px;">
+	<div class="row"  >
+		<div class="col-md-4 bg_blur " style="background-image: url('/static/images/bg.jpg')">
+    	   <!--  <a href="#" class="follow_btn hidden-xs">VISIT</a> -->
+		</div>
+        <div class="col-md-8  col-xs-12" >
+           <img src="/static/feedback/images/profile.png" class="img-thumbnail picture hidden-xs" />
+           <img src="/static/feedback/images/profile.png" class="img-thumbnail visible-xs picture_mob" />
+           <div class="header">
+                <h1>Hello, {{student.name}}</h1>
+
+                
+                <span>Even though you have logged into the system using your login credentials,
+your identity for feedback is kept anonymous.
+</span>
+           </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="row msg msg-danger">
+   <p>
+
+<b><span style="color:green">Hello, {{student.name}} </span>,<br>
+    Even though you have logged into the system using your login credentials,
+your identity for feedback is kept anonymous.</b></div> -->
+<div class="row msg msg-magick">
+<p>
+Following are the courses you have undergone during the recently concluded semester. Please give your feedback for all the courses. 
+If the course is taught by more than one faculty member, the course will appear multiple times, together with the name of
+each of the faculty members. The feedback needs to be given teacher-wise.</p> </div>
+<div class="row">
+
+<div class="table-responsive-vertical shadow-z-1 table-bordered " style="-webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.12),
+                      0 1px 2px 0 rgba(0,0,0,.24);
+  -moz-box-shadow:    0 1px 3px 0 rgba(0,0,0,.12),
+                      0 1px 2px 0 rgba(0,0,0,.24);
+  box-shadow:         0 1px 3px 0 rgba(0,0,0,.12),
+                      0 1px 2px 0 rgba(0,0,0,.24">
+  <!-- Table starts here -->
+  <table id="table" class="table">
+    <thead style="background:#8B497E; color:#e6e6fa;"><th>Course Code</th>
+    <th>Course Name</th>
+    <th> Faculty</th>
+    <th> Status</th>
+    <th>Action</th>
+    </thead>
+{% for done in done_list %}
+
+
+                <tr>
+                    <td> <b>{{done.course.subject.subject_code}} </b></td>
+              <td> <b>{{done.course.subject.subject_name}}</b> </td>
+               <td> <b> {{done.course.professor.prof_name}} </b></td>
+                     {% if done.done %} <td>Done <span style="color:green;" class="glyphicon glyphicon-ok-sign"></span></td>
+                    <td>None</td>
+                        {% else %}<td> Pending <span style="color:red;" class="glyphicon glyphicon-remove-circle"></span></td>
+                    <td><a href = "{% url 'feedback:polls' done.course.professor.id student.roll_no done.course.subject.id key %}">Fill Feedback</a></td>
+                {% endif %} </tr>
+
+
+
+
+
+
+{% endfor %}
+</table>
+    </div></div></div>
+<!--
+<h5 class="msg msg-success"><b>Comp leted Feedback Courses</b></h5>
+<p> In this </p>
+{% for done in done_list %}
+    {% if done.done %}
+        <li style="font-size:18px;">
+                <b>{{done.course.subject.subject_code}} </b><br>
+                {{done.course.subject.subject_name}}<br>
+                {{done.course.professor.prof_name}}- Done
+                <br>
+        </li>
+    {% endif %}
+{% endfor %}
+<h5><b> Pending List of Courses For Feedback</b></h5>
+{% for done in done_list %}
+        {% if not done.done %}
+
+        <li style="font-size:18px;">
+           <b> {{done.course.subject.subject_code}} </b> <br>
+            {{done.course.subject.subject_name}}<br>
+            <ol><a href = "{% url 'feedback:polls' done.course.professor.id student.roll_no done.course.subject.id key %}">
+                {{done.course.professor.prof_name}}</a></ol>
+            <br>
+        </li>
+    {% endif %}
+{% endfor %}
+
+
+</div>-->
+   
+{% endblock %} 
+</body>
+
+</html>

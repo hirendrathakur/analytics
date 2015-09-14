@@ -1,0 +1,238 @@
+{% extends "feedback/index.html" %}
+  {% block body  %}
+<h3 style="padding:10px;font-size:25px; border: none;" class="btn-magick"><span class="glyphicon glyphicon-list-alt"></span> Department Wise Analytics:</h3>
+<p>Page may take some time to load completely.</p>
+<table class="table table-bordered"><tbody><tr><th colspan="2" style="text-align:center;"><h4>Overview</h4></th></tr>
+
+    <tr><th><b>Total number of Course-Faculty pairs populated </b></th><th>{{total}}</th></tr>
+
+    <tr><th><b>Course-Faculty pair for which atleast one feedback is received </b></th><th>{{result_count}}</th></tr>
+<tr><th><b>Total number of feedback expected for course-faculty pair </b></th><th>{{Total_Done}}</th></tr>
+<tr><th><b>Actual number of feedback received for course-faculty pair </b></th><th>{{Actual_Done}}</th></tr>
+
+</tbody>
+    </table>
+{% for f in faculty %}
+<div class="panel panel-success">
+                <div class="panel-heading ripple-effect">
+                    <h3 class="panel-title"><h4><b> {{forloop.counter}}.</b> {{ f.prof_name }}</h4></h3>
+                    <span class="pull-right "><i class="glyphicon glyphicon-minus"></i></span>
+                </div>
+                <div class="panel-body">
+
+<p>In this section, you will see the feedback response of all courses taught by <b>{{ f.prof_name }}</b>.</p>
+
+        {% for Course in course %}
+                    {% if f == Course.professor  %}
+                   <h4 class="btn-magick btn-lg">  <b><span class="glyphicon glyphicon-circle-arrow-right"></span> {{Course.subject}} {{Course.subject.subject_name}}</b> </h4>
+                       {% for result in result %}
+                        {% if Course == result.course and f == result.course.professor and result.question == question %}
+ <p id="msg{{result.pk}}"> Sorry no votes has been recieved for this course-faculty pair.  </p>
+                   <div class="progress" style="height:22px;display:none;" id="progress{{result.pk}}">
+
+  <div class="progress-bar progress-bar-success " role="progressbar" id="progressBar1{{result.pk}}" style="width:20%;">
+    20% Excellent Votes
+  </div>
+  <div class="progress-bar progress-bar-info" role="progressbar"  id="progressBar2{{result.pk}}" style="width:20%;">
+    20% Very Good Votes
+  </div>
+  <div class="progress-bar progress-bar-default" role="progressbar" id="progressBar3{{result.pk}}"  style="width:20%;">
+    20% Good Votes
+  </div>
+                       <div class="progress-bar progress-bar-warning" role="progressbar" id="progressBar4{{result.pk}}"  style="width:20%;">
+    20% Fair Votes
+  </div>
+                        <div class="progress-bar progress-bar-danger" role="progressbar" id="progressBar5{{result.pk}}"  style="width:20%;">
+20% Poor Votes
+  </div>
+</div>
+                    {% if result.total_votes > 0 %}
+
+    <script type="text/javascript">
+
+        var a= {{result.excellent_votes}};
+        a = parseInt(a,10);
+
+        var b={{result.verygood_votes}};
+        b = parseInt(b,10);
+        var c={{result.good_votes}};
+        c = parseInt(c,10);
+        var d= {{result.fair_votes}}
+        d = parseInt(d,10);
+        var e={{result.poor_votes}};
+        e = parseInt(e,10);
+        var f={{result.total_votes}}
+        f = parseInt(f,10);
+        f=a+b+c+d+e;
+        if(f >0) {
+        a=a/f*100;
+        b=b/f*100;
+        c=c/f*100;
+        d=d/f*100;
+
+
+        a=Math.round(a*100)/100;
+        b=Math.round(b*100)/100;
+        c=Math.round(c*100)/100;
+        d=Math.round(d*100)/100;
+
+        e=100-(a+b+c+d);
+        e=Math.floor(e*100)/100;
+        a = a.toString()+'%';
+        b = b.toString()+'%';
+        c = c.toString()+'%';
+        d = d.toString()+'%';
+        e = e.toString()+'%';
+        document.getElementById('progress{{result.pk}}').style.display='block';
+
+        document.getElementById('progressBar1{{result.pk}}').style.width=a;
+        document.getElementById('progressBar1{{result.pk}}').innerHTML = a+" Excellent Votes";
+        document.getElementById('progressBar2{{result.pk}}').style.width=b;
+        document.getElementById('progressBar3{{result.pk}}').style.width=c;
+        document.getElementById('progressBar4{{result.pk}}').style.width=d;
+        document.getElementById('progressBar5{{result.pk}}').style.width=e;
+        document.getElementById('progressBar2{{result.pk}}').innerHTML = b+" Very Good Votes";
+        document.getElementById('msg{{result.pk}}').innerHTML = "Here's the graphical view for response of  <i>Overall Rating of the teacher</i>, as recorded by portal:";
+        document.getElementById('progressBar3{{result.pk}}').innerHTML = c+ " Good Votes";
+        document.getElementById('progressBar4{{result.pk}}').innerHTML = d+" Fair Votes";
+        document.getElementById('progressBar5{{result.pk}}').innerHTML = e+" Poor Votes";
+}
+{% endif %}
+    </script>
+                        {% endif %}
+                        {% endfor %}
+                    <div class="row" id="show{{Course.pk}}">
+                    <div class="col-sm-3">
+                  <a href="javascript:void(0)" onclick="show('{{Course.pk}}')"><span class="glyphicon glyphicon-cloud-download"></span> Show/Hide Question Responses</a></div>
+                     <div class="col-sm-3">
+                    <a href="javascript:void(0)" onclick="show('{{Course.pk}}comment_1')"><span class="glyphicon glyphicon-cloud-download"></span> Show/Hide Comments On Course Organisation</a> </div>
+                   <div class="col-sm-3">
+                    <a href="javascript:void(0)" onclick="show('{{Course.pk}}comment_2')"><span class="glyphicon glyphicon-cloud-download"></span> Show/Hide Comment On Presentation</a></div>
+                    <div class="col-sm-3">
+
+                    <a href="javascript:void(0)" onclick="show('{{Course.pk}}comment_3')"><span class="glyphicon glyphicon-cloud-download"></span> Show/Hide Comment On Interaction and Rapport</p></a></div>
+ <div class="col-sm-3">
+                    <a href="javascript:void(0)" onclick="show('{{Course.pk}}comment_4')"><span class="glyphicon glyphicon-cloud-download"></span>Show/Hide Comment On Examinations and Grading</p></a></div>
+
+</div>
+
+                    <div class="row" id="{{Course.pk}}comment_1" style="display:none;">
+                        <h4>&nbsp;&nbsp;<span class="glyphicon glyphicon-tasks"></span> Comments On Course Organisation</h4>
+                        <div class="msg msg-success">
+                        {% for comment in comments %}
+
+                        {% if comment.course == Course %}
+                            {% if comment.comment_1 %}
+                        <p><span class="glyphicon glyphicon-comment"></span> {{comment.comment_1}}</p>
+{% endif %}
+                        {% endif %}
+
+                        {% endfor %} </div>
+
+                    </div>
+
+                    <div class="row" id="{{Course.pk}}comment_2" style="display:none;">
+                        <h4>&nbsp;&nbsp;<span class="glyphicon glyphicon-tasks"></span> Comment On Presentation </h4>
+                        <div class="msg msg-success">
+                        {% for comment in comments %}
+
+                        {% if comment.course == Course %}
+                            {% if comment.comment_2 %}
+                        <p><span class="glyphicon glyphicon-comment"></span> {{comment.comment_2}}</p>
+{% endif %}
+                        {% endif %}
+
+                        {% endfor %} </div>
+
+                    </div>
+
+
+
+
+                    <div class="row" id="{{Course.pk}}comment_3" style="display:none;">
+                        <h4>&nbsp;&nbsp;<span class="glyphicon glyphicon-tasks"></span> Comment On Interaction and Rapport </h4>
+                        <div class="msg msg-success">
+                        {% for comment in comments %}
+
+                        {% if comment.course == Course %}
+                            {% if comment.comment_3 %}
+                        <p><span class="glyphicon glyphicon-comment"></span> {{comment.comment_3}}</p>
+{% endif %}
+                        {% endif %}
+
+                        {% endfor %} </div>
+
+                    </div>
+
+
+
+
+
+                    <div class="row" id="{{Course.pk}}comment_4" style="display:none;">
+                        <h4>&nbsp;&nbsp;<span class="glyphicon glyphicon-tasks"></span>
+ Comment On Examinations and Grading </h4>
+                        <div class="msg msg-success">
+                        {% for comment in comments %}
+
+                        {% if comment.course == Course %}
+                            {% if comment.comment_4 %}
+                        <p><span class="glyphicon glyphicon-comment"></span> {{comment.comment_4}}</p>
+{% endif %}
+                        {% endif %}
+
+                        {% endfor %} </div>
+
+                    </div>
+
+
+<div id="{{Course.pk}}" class="row" style="display:none;">
+    <br>
+
+{% for result in result %}
+                    {% if Course == result.course and f == result.course.professor %}
+   <div class="msg msg-magick"><p><span class="glyphicon glyphicon-chevron-right"></span> <b>{{result.question}}</b>
+      <span style="color:green;"><br>Vote Results</span>  <b>Total Votes:</b> {{result.total_votes}} <span class="pull-right"><b>Excellent: </b> {{result.excellent_votes}}
+        <b>Very Good :</b> {{result.verygood_votes}}
+        <b>Good : </b> {{result.good_votes}}
+        <b>Fair : </b> {{result.fair_votes}}
+       <b>Poor : </b> {{result.poor_votes}}</span>
+                   </p> </div>
+
+
+                    {% endif %}
+                    {% endfor %}
+    </div>
+
+
+
+
+{% endif %}
+
+{% endfor %}
+
+
+	</div>
+
+
+
+             </div>
+{% endfor %}
+
+                      <script>
+
+    function show(one) {
+   if( document.getElementById(one).style.display === 'block')
+   {
+   document.getElementById(one).style.display = 'none';
+   }
+
+   else
+   {
+   document.getElementById(one).style.display = 'block';
+   }
+
+
+
+}
+</script>
+{% endblock %}

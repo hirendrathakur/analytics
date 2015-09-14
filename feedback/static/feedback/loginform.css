@@ -1,0 +1,310 @@
+/**
+ * parallax.css
+ * @Author Original @msurguy -> http://bootsnipp.com/snippets/featured/parallax-login-form
+ * @Reworked By @kaptenn_com 
+ * @package PARALLAX LOGIN.
+ */
+    
+    body {
+        background-color: #444;
+        background: url(/static/feedback/images/cover.jpg) center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+    }
+    .form-signin input[type="text"] {
+        margin-bottom: 5px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+    .form-signin .form-control {
+        position: relative;
+        font-size: 16px;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        height: auto;
+        padding: 10px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+    }
+    .panel {
+    margin-bottom: 60px;
+    margin-top: 40px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    }
+    /* CSS used here will be applied after bootstrap.css */
+
+
+#footer {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  color: #fff;
+  background:black;
+  border-top: 0px solid #8B497E;
+}
+
+#footer a {
+  color: #fff;
+}
+
+#footer a:hover {
+  color: #8B497E;
+}
+
+#footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#footer ul > li {
+  display: inline-block;
+  margin-left: 15px;
+}
+#footer > .container {
+padding:0px;
+}
+
+
+
+
+
+
+.navbar {
+
+
+border-bottom: 2px solid #8B497E;
+box-shadow:0 5px 6px -4px #aaa;
+
+
+}
+
+
+.navbar > .container > .navbar-brand .affix
+{
+color: #fff;
+
+}
+
+
+
+/* CSS used here will be applied after bootstrap.css */
+html,body {
+	height:100%;
+
+}
+
+section {
+  height:calc(90% - 50px);
+}
+
+.affix-top heading {
+font-size:30px;
+margin-top: 20px;
+padding-bottom:70px;
+padding-left:40px;
+padding-right:40px;
+  -webkit-transition:padding 0.2s linear;
+  -moz-transition:padding 0.2s linear;
+  -o-transition:padding 0.2s linear;
+  transition:padding 0.2s linear;
+}
+.affix-top {
+  padding-top:0px;
+  background: #FFF;
+    margin-bottom: 0px;
+  padding-bottom:0px;
+  -webkit-transition:padding 0.2s linear;
+  -moz-transition:padding 0.s linear;
+  -o-transition:padding 0.2s linear;
+  transition:padding 0.2 linear;
+      -webkit-transition:background 0.2s linear;
+  -moz-transition:background 0.2s linear;
+  -o-transition:background 0.2s linear;
+  transition:background 0.2s linear;
+
+}
+
+
+.affix-top a {
+  font-family: 'RobotoDraft', 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
+padding-bottom:0px;
+
+  -webkit-transition:padding 0.2s linear;
+  -moz-transition:padding 0.2s linear;
+  -o-transition:padding 0.2s linear;
+  transition:padding 0.2s linear;
+
+}
+.affix-top ul {
+
+padding-top: 30px;
+font-size:16px;
+
+font-style: italic;
+  -webkit-transition:padding 0.2s linear;
+  -moz-transition:padding 0.2s linear;
+  -o-transition:padding 0.2s linear;
+  transition:padding 0.2s linear;
+
+}
+
+.affix a {
+padding: auto;
+  -webkit-transition:padding 0.2s linear;
+  -moz-transition:padding 0.2s linear;
+  -o-transition:padding 0.2s linear;
+  transition:padding 0.2s linear;
+
+}
+.affix li {
+padding: auto;
+  -webkit-transition:padding 0.2s linear;
+  -moz-transition:padding 0.2s linear;
+  -o-transition:padding 0.2s linear;
+  transition:padding 0.2s linear;
+
+}
+
+
+*/
+
+
+
+
+.navbar-nav>li{
+  margin-left: 10px;
+  padding-bottom: 5px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  padding: 5px 12px;
+  margin: 0;
+  border-radius: 3px;
+  color: #000;
+  line-height: 24px;
+  display: inline-block;
+}
+
+.navbar-default .navbar-nav > li > a:hover{
+	background-color: #8B497E;
+  color: #fff;
+}
+
+
+
+
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  background-color: #8B497E;
+  color: #fff;
+}
+
+.navbar-default .navbar-nav .dropdown-menu {
+  background-color: rgba(139,73,126,.75);
+  -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
+  -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
+  border: 0;
+  padding: 0;
+  margin-top: 0;
+  border-top: 0;
+  border-radius: 0;
+  left: 0;
+}
+
+.navbar-default .navbar-nav .dropdown-menu:before{
+  position: absolute;
+  top:0;
+}
+
+.navbar-default .navbar-nav .dropdown-menu > li > a {
+  padding: 8px 15px;
+  color: #fff;
+}
+
+.navbar-default .navbar-nav .dropdown-menu > li:hover > a,
+.navbar-default .navbar-nav .dropdown-menu > li:focus > a,
+.navbar-default .navbar-nav .dropdown-menu > li.active > a {
+  background-color: #8B497E;
+    color: #fff;
+}
+
+.navbar-default .navbar-nav .dropdown-menu > li:last-child > a {
+  border-radius: 0 0 3px 3px;
+}
+
+.navbar-default .navbar-nav .dropdown-menu > li.divider {
+  background-color: transparent;
+}
+
+
+
+@media (max-width: 767px) {
+    .header{
+        text-align : center;
+    }
+
+
+
+    .nav{
+        margin-top : 30px;
+    }
+}
+
+
+@media (max-width: 760px) {
+.navbar  heading{
+width: 40%;
+font-size:30px;
+padding-top:10px;
+line-height:32px;
+}
+.navbar-brand {
+width:60%;
+}
+.navbar-brand img {
+width:100%;
+}
+.navbar-collapse {
+width: 100%;
+}
+}
+
+@media (max-width: 480px) {
+
+.navbar  heading{
+width: 40%;
+font-size:15px;
+padding:10px;
+}
+.navbar-brand {
+width:60%;
+}
+.navbar-brand img {
+width:100%;
+}
+}
